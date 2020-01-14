@@ -1,0 +1,29 @@
+{
+  "name": "tf-playground-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4doge/tf-playground-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4doge/tf-playground-client/issues"
+  },
+  "homepage": "https://github.com/4doge/tf-playground-client#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-static": "^5.0.0"
+  },
+  "engines": {
+    "node": "12.11.1",
+    "npm": "6.11.3"
+  }
+}

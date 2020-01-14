@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div v-if="loading">
+          <h1 class="title is-1">Wait for model loading!</h1>
+        </div>
+        <div v-else class="columns">
+          <div class="column is-3">
+            <h1 class="title is-1">How to?</h1>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+          <div class="column is-3">
+            <h1 class="title is-1">Upload</h1>
+            <div class="field">
+              <div class="control">
+                <div class="file is-fullwidth has-name is-right">
+                  <label class="file-label">
+                    <input
+                      class="file-input"
+                      type="file"
+                      name="img"
+                      @input="handleImage"
+                    />
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">Choose a file...</span>
+                    </span>
+                    <span v-if="imgToPredictName" class="file-name"
+                      >{{ imgToPredictName }}</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button type="button" class="button is-info" @click="predict">
+                  Predict
+                </button>
+              </div>
+            </div>
+
+            <h1 class="title is-1">Camera</h1>
+            <div class="field">
+              <div class="control">
+                <button type="button" class="button is-info" @click="enableCamera">Enable</button>
+              </div>
+            </div>
+          </div>
+          <div class="column is-3">
+            <h1 class="title is-1">Preview</h1>
+            <img :src="imgToPredictPreview" ref="preview" alt="" />
+            <div id="webcam-container"></div>
+          </div>
+          <div class="column is-3">
+            <h1 class="title is-1">Predict</h1>
+            <ul>
+              <li v-for="(p, index) in predictions" :key="index">
+                <b>{{ p.className }}:</b> {{ p.probability }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
