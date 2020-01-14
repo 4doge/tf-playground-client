@@ -35,7 +35,7 @@ const app = new Vue({
       }
     },
     async enableCamera() {
-      await this.webcam.setup();
+      await this.webcam.setup().then(msg => alert(JSON.stringify(msg))).catch(msg => alert(JSON.stringify(msg)));
       this.webcam.play();
       window.requestAnimationFrame(this.loop);
       document
@@ -51,7 +51,7 @@ const app = new Vue({
     async predictFromCamera() {
       const prediction = await this.model.predict(this.webcam.canvas);
       this.showPredictions(prediction);
-      
+
     },
     showPredictions(prediction) {
       this.predictions = [];
